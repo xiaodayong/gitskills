@@ -1,0 +1,20 @@
+请求参数
+1. 通过设置HttpServletRequest request 来获取数据
+2. 直接设置参数add(@RequestParam(value="number")String userNumber,Integer passWord)
+3. 通过对象:
+	表单的name属性的值必须和类的属性名称一致
+	
+	
+	/**
+	 * 时间属性编辑器
+	 */
+	@InitBinder
+	public void initBinder(ServletRequestDataBinder bin){
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		
+		CustomDateEditor cust = new CustomDateEditor(sdf, true);
+		
+		
+		bin.registerCustomEditor(Date.class,cust);
+	}
